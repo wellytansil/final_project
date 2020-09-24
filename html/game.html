@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Collecting Egg</title>
+    <link rel="stylesheet" href="../css/stylegame.css" type="text/css">
+</head>
+<body>
+    <button type="button" onclick="waktuPermainan()">Mulai</button>
+    
+    <div class="container">
+        <div class="ayam">
+            <div class="telur">
+
+            </div>
+        </div>
+        <div class="ayam">
+            <div class="telur">
+
+            </div>
+        </div>
+        <div class="ayam">
+            <div class="telur">
+
+            </div>
+        </div>
+        <div class="ayam">
+            <div class="telur">
+
+            </div>
+        </div>
+        <div class="ayam">
+            <div class="telur">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let ayam = document.getElementsByClassName('ayam');
+        let telur = document.getElementsByClassName('telur');
+        let waktuRandom = Math.round((Math.random() * (600)) + 600);
+        let timesUp = false;
+
+        function telurJatuh(){
+            let angkaRandom = Math.floor(Math.random() * 5);
+            ayam[angkaRandom].classList.add('jatuh');
+            
+            setTimeout(() => {
+                ayam[angkaRandom].classList.remove('jatuh');
+                if(!timesUp){
+                    telurJatuh();
+                }
+            }, waktuRandom)
+        }
+
+        function waktuPermainan(){
+            telurJatuh();
+            setInterval(() => {
+                timesUp = true;
+            }, 5000)
+        }
+    </script>
+</body>
+</html>
