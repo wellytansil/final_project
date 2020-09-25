@@ -1,12 +1,15 @@
 * {
     text-align: center;
+    background-color: yellow;
 }
 
 .container {
     width: 500px;
-    height: 400px;
+    height: 300px;
     margin: auto;
-    border: 3px black solid
+    overflow: hidden;
+    border-bottom: 2px black solid;
+    cursor: url(../img/output-onlinepngtools.png), auto;
 }
 
 .ayam {
@@ -26,6 +29,7 @@
     top: -70px;
 }
 
+
 .telur {
     width: 100%;
     height: 100%;
@@ -36,6 +40,11 @@
 }
 
 .ayam.jatuh .telur {
-    top: 160px;
-    transition: 1000ms;
+    top: 120px;
+    transition: 600ms;
 } 
+
+.ayam.jatuh.hilang .telur {
+    top: 300px;
+    transition: 1ms
+}

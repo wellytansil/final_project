@@ -5,9 +5,10 @@
     <link rel="stylesheet" href="../final_project/css/stylegame.css" type="text/css">
 </head>
 <body>
-    <button type="button" onclick="waktuPermainan()" id="start">Mulai</button>
+    <h1>Ready to collect the eggs?</h1>
+    <button type="button" onclick="waktuPermainan()" id="start">Start!</button>
     
-    <h2 id="sekor">0</h2>
+    <h2 class="output">0<h2>
     <div class="container">
         <div class="ayam">
             <div class="telur">
@@ -34,23 +35,46 @@
 
             </div>
         </div>
+
+        <div class="rumput">
+
+        </div>
+        <div>
+            <a href="index.html" id="looping"></a>
+        </div>
+    </div>
+
+    <div>
+        <p id="result"></p>
     </div>
 
     <script>
-        let ayam = document.getElementsByClassName('ayam');
-        let telur = document.getElementsByClassName('telur');
-        let waktuRandom = Math.round((Math.random() * (600)) + 600);
-        let timesUp = false;
-        let nilaiScore = document.getElementById('sekor');
+        const ayam = document.querySelectorAll('.ayam');
+        const telur = document.querySelectorAll('.telur');
+        const nilaiScore = document.querySelector('.output');
 
-        let score = 0
+        let waktuRandom = 600;
+        let timesUp;
+        let score = 0;
+        let ayamSebelumnya;
+
+        function generateAngka(arr){
+            let angkaRandom = Math.floor(Math.random() * arr.length);
+            let ayamBertelur = arr[angkaRandom];
+            if(ayamBertelur === ayamSebelumnya){
+                generateAngka(arr)
+            }
+            ayamSebelumnya = ayamBertelur;
+
+            return ayamBertelur;
+        }
 
         function telurJatuh(){
-            let angkaRandom = Math.floor(Math.random() * 5);
-            ayam[angkaRandom].classList.add('jatuh');
+            const ayamBertelur = generateAngka(ayam);
+            ayamBertelur.classList.add('jatuh');
             
             setTimeout(() => {
-                ayam[angkaRandom].classList.remove('jatuh');
+                ayamBertelur.classList.remove('jatuh');
                 if(!timesUp){
                     telurJatuh();
                 }
@@ -58,16 +82,30 @@
         }
 
         function waktuPermainan(){
+            timesUp = false;
+            nilaiScore.textContent = 0;
+            score = 0;
             telurJatuh();
             setInterval(() => {
                 timesUp = true;
+                scoreTotal();
             }, 10000)
         }
 
         function collect(){
-            score++
-            nilaiScore.innerText = score
-        }  
+            score += 1;
+            nilaiScore.textContent = score;
+            this.parentNode.classList.add('hilang');
+        } 
+        
+        telur.forEach(t => {
+            t.addEventListener('mouseover', collect);
+        });
+
+        function scoreTotal(){
+            document.getElementById("result").innerHTML += `Your Total Score is ${nilaiScore.textContent}`
+            document.getElementById("looping").innerHTML += `Play Again?`
+        }
     </script>
 </body>
 </html>
