@@ -47,13 +47,12 @@
     <div>
         <p id="result"></p>
     </div>
-
+    
     <script>
         const ayam = document.querySelectorAll('.ayam');
         const telur = document.querySelectorAll('.telur');
         const nilaiScore = document.querySelector('.output');
 
-        let waktuRandom = 600;
         let timesUp;
         let score = 0;
         let ayamSebelumnya;
@@ -72,13 +71,13 @@
         function telurJatuh(){
             const ayamBertelur = generateAngka(ayam);
             ayamBertelur.classList.add('jatuh');
-            
+
             setTimeout(() => {
                 ayamBertelur.classList.remove('jatuh');
                 if(!timesUp){
                     telurJatuh();
                 }
-            }, waktuRandom)
+            }, 500)
         }
 
         function waktuPermainan(){
@@ -95,7 +94,6 @@
         function collect(){
             score += 1;
             nilaiScore.textContent = score;
-            this.parentNode.classList.add('hilang');
         } 
         
         telur.forEach(t => {
