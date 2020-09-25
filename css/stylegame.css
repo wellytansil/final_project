@@ -40,11 +40,6 @@
 }
 
 .ayam.jatuh .telur {
-    top: 120px;
+    top: 140px;
     transition: 500ms;
 } 
-
-.ayam.jatuh.hilang .telur {
-    top: -70px;
-    transition: 1ms
-}

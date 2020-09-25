@@ -48,26 +48,25 @@
         <p id="result"></p>
     </div>
 
-    <audio id="myAudio" controls autoplay>
-        <source src="/bgmusic.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
+    <audio loop id="playAudio">
+        <source src="/bgmusic.mp3" />
     </audio>
-    <p id="demo"></p>
-    
+
     <script>
         const ayam = document.querySelectorAll('.ayam');
         const telur = document.querySelectorAll('.telur');
         const nilaiScore = document.querySelector('.output');
-        var x = document.getElementById("myAudio").autoplay;
 
         let timesUp;
         let score = 0;
         let ayamSebelumnya;
 
-        function myFunction() {
-            var x = document.getElementById("myAudio").autoplay;
-            document.getElementById("demo").innerHTML = x;
+        document.addEventListener("click", musicPlay);
+        function musicPlay() {
+        document.getElementById("playAudio").play();
+        document.removeEventListener("click", musicPlay);
         }
+
         function generateAngka(arr){
             let angkaRandom = Math.floor(Math.random() * arr.length);
             let ayamBertelur = arr[angkaRandom];
@@ -88,7 +87,7 @@
                 if(!timesUp){
                     telurJatuh();
                 }
-            }, 500)
+            }, 380)
         }
 
         function waktuPermainan(){
@@ -112,8 +111,8 @@
         });
 
         function scoreTotal(){
-            document.getElementById("result").innerHTML += `Your Total Score is ${nilaiScore.textContent}`
-            document.getElementById("looping").innerHTML += `Play Again?`
+            document.getElementById("result").innerHTML = `Your Total Score is ${nilaiScore.textContent}`
+            document.getElementById("looping").innerHTML = `Play Again?`
         }
     </script>
 </body>

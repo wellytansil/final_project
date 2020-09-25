@@ -18,18 +18,15 @@
 
         <h3>Created by: Welly Tansil</h3>
 
-        <audio id="myAudio" controls autoplay>
-            <source src="/bgmusic.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
+        <audio loop id="playAudio">
+            <source src="/bgmusic.mp3" />
         </audio>
-        <p id="demo"></p>
-
+      
         <script>
-            var x = document.getElementById("myAudio").autoplay;
-
-            function myFunction() {
-                var x = document.getElementById("myAudio").autoplay;
-                document.getElementById("demo").innerHTML = x;
+            document.addEventListener("click", musicPlay);
+            function musicPlay() {
+            document.getElementById("playAudio").play();
+            document.removeEventListener("click", musicPlay);
             }
         </script>
     </body>
