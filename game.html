@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <title>Collecting Egg</title>
-    <link rel="stylesheet" href="../css/stylegame.css" type="text/css">
+    <link rel="stylesheet" href="../final_project/css/stylegame.css" type="text/css">
 </head>
 <body>
-    <button type="button" onclick="waktuPermainan()">Mulai</button>
+    <button type="button" onclick="waktuPermainan()" id="start">Mulai</button>
     
+    <h2 id="sekor">0</h2>
     <div class="container">
         <div class="ayam">
             <div class="telur">
@@ -40,6 +41,9 @@
         let telur = document.getElementsByClassName('telur');
         let waktuRandom = Math.round((Math.random() * (600)) + 600);
         let timesUp = false;
+        let nilaiScore = document.getElementById('sekor');
+
+        let score = 0
 
         function telurJatuh(){
             let angkaRandom = Math.floor(Math.random() * 5);
@@ -57,8 +61,13 @@
             telurJatuh();
             setInterval(() => {
                 timesUp = true;
-            }, 5000)
+            }, 10000)
         }
+
+        function collect(){
+            score++
+            nilaiScore.innerText = score
+        }  
     </script>
 </body>
 </html>
