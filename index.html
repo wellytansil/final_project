@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="../final_project/css/styleindex.css" type="text/css">
     </head>
 
-    <body onload="myFunction()">
+    <body>
         <h1>ARE YOU READY TO COLLECT THE EGGS?</h1><br>
         <br>
         <a href="game.html" class="tombol">
@@ -18,17 +18,18 @@
 
         <h3>Created by: Welly Tansil</h3>
 
-        <audio controls autoplay id="audio1">
-            <source src="suaraayam.mp3" type="audio/mp3">
-            <source src="bgmusic.m4a" type="audio/m4a">
+        <audio id="myAudio" controls autoplay>
+            <source src="/bgmusic.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
-        
-        <script>
-            let audio = getElementById("audio1")
+        <p id="demo"></p>
 
-            function myFunction(){
-                audio.play()
+        <script>
+            var x = document.getElementById("myAudio").autoplay;
+
+            function myFunction() {
+                var x = document.getElementById("myAudio").autoplay;
+                document.getElementById("demo").innerHTML = x;
             }
         </script>
     </body>
